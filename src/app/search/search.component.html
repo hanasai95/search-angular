@@ -1,0 +1,31 @@
+<div class="loading" *ngIf="loading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div *ngIf="!loading">
+  <div class="mt-5 mb-3 row">
+    <h3>Search Users on Git</h3>
+    <div class="mt-5 mb-3 col-6">
+      <label for="name">Search name</label>
+      <div class="">
+        <input type="text" [ngClass]="[nameError?'form-control is-invalid':'form-control']" [(ngModel)]="name"
+          placeholder="Search Name" id="name">
+        <div *ngIf="nameError" class="invalid-feedback">
+          Name is invalide.
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 mb-3 col-3">
+      <label for="count">Number of Records</label>
+      <div class="">
+        <input type="number" [ngClass]="[perPageError?'form-control is-invalid':'form-control']" [(ngModel)]="perPage"
+          placeholder="Numbe of records" id="count">
+        <div *ngIf="perPageError" class="invalid-feedback">
+          Per Page is invalid (must be 1 - 100)
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="onSearch()">Search</button>
+</div>
